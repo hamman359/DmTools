@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="BackgroundJobs\" />
-    <Folder Include="Caching\" />
     <Folder Include="Idempotence\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -16,6 +15,11 @@
   <ItemGroup>
     <PackageReference Include="Polly.Core" Version="8.4.1" />
     <PackageReference Include="Quartz" Version="3.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DmTools.Application\DmTools.Application.csproj" />
+    <ProjectReference Include="..\DmTools.Persistence\DmTools.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

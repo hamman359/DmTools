@@ -1,6 +1,8 @@
-﻿namespace DmTools.Presentation;
+﻿using System.Reflection;
 
-public class AssemblyReference
+namespace DmTools.Presentation;
+
+public static class AssemblyReference
 {
-
+    public static readonly Assembly Assembly = typeof(AssemblyReference).Assembly;
 }

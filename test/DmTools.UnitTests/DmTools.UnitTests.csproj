@@ -26,6 +26,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\DmTools.Application\DmTools.Application.csproj" />
+    <ProjectReference Include="..\..\src\DmTools.App\DmTools.App.csproj" />
+    <ProjectReference Include="..\..\src\DmTools.Domain\DmTools.Domain.csproj" />
+    <ProjectReference Include="..\..\src\DmTools.Infrastructure\DmTools.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\DmTools.Persistence\DmTools.Persistence.csproj" />
+    <ProjectReference Include="..\..\src\DmTools.Presentation\DmTools.Presentation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
