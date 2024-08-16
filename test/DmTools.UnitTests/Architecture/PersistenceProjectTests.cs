@@ -1,4 +1,4 @@
-﻿namespace DmTools.UnitTests;
+﻿namespace DmTools.UnitTests.Architecture;
 
 public class PersistenceProjectTests
 {
