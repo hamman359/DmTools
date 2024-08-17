@@ -1,6 +1,5 @@
-﻿namespace DmTools.UnitTests;
+﻿global using ArchUnitNET.Domain;
+global using ArchUnitNET.Loader;
+global using ArchUnitNET.xUnit;
 
-public class Usings
-{
-
-}
+global using static ArchUnitNET.Fluent.ArchRuleDefinition;
