@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="KJWT.SharedKernel" Version="1.0.0" />
+    <PackageReference Include="KJWT.SharedKernel" Version="1.0.3" />
     <PackageReference Include="Polly.Core" Version="8.4.1" />
     <PackageReference Include="Quartz" Version="3.13.0" />
   </ItemGroup>

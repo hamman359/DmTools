@@ -1,4 +1,9 @@
 ﻿
+using System.Net;
+
+using KJWT.SharedKernel.AspNetCore;
+using KJWT.SharedKernel.Results;
+
 using Microsoft.OpenApi.Models;
 
 namespace DmTools.App.Configuration;
@@ -10,7 +15,15 @@ public class PresentationServiceInstaller : IServiceInstaller
         IConfiguration configuration)
     {
         services
-            .AddControllers()
+            .AddControllers(mvcOptions => mvcOptions
+                .AddResultConvention(resultStatusMap => resultStatusMap
+                    .AddDefaultMap()
+                    .For(ResultStatus.Ok, HttpStatusCode.OK, resultStatusOptions => resultStatusOptions
+                        .For("POST", HttpStatusCode.Created)
+                        .For("DELETE", HttpStatusCode.NoContent))
+                    .For(ResultStatus.Error, HttpStatusCode.InternalServerError)
+                    .For(ResultStatus.Created, HttpStatusCode.Created)
+                ))
             .AddApplicationPart(Presentation.AssemblyReference.Assembly);
 
         services.AddSwaggerGen(c =>

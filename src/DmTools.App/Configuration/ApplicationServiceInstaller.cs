@@ -2,6 +2,8 @@
 
 using KJWT.SharedKernel.Behaviors;
 
+using MediatR;
+
 namespace DmTools.App.Configuration;
 
 public class ApplicationServiceInstaller : IServiceInstaller
@@ -12,13 +14,21 @@ public class ApplicationServiceInstaller : IServiceInstaller
     {
         services.AddMediatR(cfg =>
         {
-            cfg.RegisterServicesFromAssemblies(Application.AssemblyReference.Assembly);
+            cfg.RegisterServicesFromAssemblies(
+                Application.AssemblyReference.Assembly,
+                Domain.AssemblyReference.Assembly);
 
             cfg.AddOpenBehavior(typeof(QueryCachingPipelineBehavior<,>));
         });
 
+        //services.Decorate(typeof(INotificationHandler<>), typeof(IdempotentDomainEventHandler<>));
+
         services.AddValidatorsFromAssembly(
             Application.AssemblyReference.Assembly,
             includeInternalTypes: true);
+
+        services.AddScoped(
+            typeof(IPipelineBehavior<,>),
+            typeof(LoggingPipelineBehavior<,>));
     }
 }

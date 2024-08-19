@@ -23,12 +23,11 @@ public sealed class ItemList : AggregateRoot
 
     public IReadOnlyCollection<ListItem> Items => _items;
 
-    public ItemList Create(
-        Guid id,
+    public static ItemList Create(
         string name,
         string description)
     {
         //TODO: Add Validations
-        return new(id, name, description);
+        return new(new Ulid().ToGuid(), name, description);
     }
 }

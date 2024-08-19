@@ -17,7 +17,9 @@ public class InfrastructureServiceInstaller : IServiceInstaller
                 selector => selector
                     .FromAssemblies(
                         Infrastructure.AssemblyReference.Assembly,
-                        Persistence.AssemblyReference.Assembly)
+                        Persistence.AssemblyReference.Assembly,
+                        Domain.AssemblyReference.Assembly,
+                        KJWT.SharedKernel.AssemblyReference.Assembly)
                     .AddClasses(false)
                     .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                     .AsMatchingInterface()

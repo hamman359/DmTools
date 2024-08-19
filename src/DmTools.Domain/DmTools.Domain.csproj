@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="KJWT.SharedKernel" Version="1.0.0" />
+    <PackageReference Include="KJWT.SharedKernel" Version="1.0.3" />
     <PackageReference Include="MediatR" Version="12.4.0" />
   </ItemGroup>
 
