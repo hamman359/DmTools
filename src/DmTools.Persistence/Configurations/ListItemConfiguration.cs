@@ -12,7 +12,5 @@ internal sealed class ListItemConfiguration : IEntityTypeConfiguration<ListItem>
         builder.ToTable(TableNames.ListItems);
 
         builder.HasKey(x => x.Id);
-
-
     }
 }

@@ -30,7 +30,7 @@ public class AddItemListEndpoint
         Summary = "Creates a new Item List",
         Description = "Creates a new Item List",
         OperationId = "ItemList_Create",
-        Tags = ["CreateItemListEndpoint"])]
+        Tags = ["ItemListEndpoint"])]
     public override async Task<ActionResult<Guid>> HandleAsync(
         [FromBody] AddItemListCommand request,
         CancellationToken cancellationToken = default)
