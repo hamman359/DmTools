@@ -4,21 +4,13 @@ public class PresentationProjectTests : ArchitectureTestBase
 {
 
     [Fact]
-    void Domain_ShouldNot_HaveDependenciesOnOtherProjects()
+    void Presentation_ShouldNot_HaveDependenciesOnOtherProjects()
     {
         Types()
             .That()
-            .Are(_domainLayer)
+            .Are(_presentationLayer)
             .Should()
             .NotDependOnAny(_appLayer)
-            .AndShould()
-            .NotDependOnAny(_applicationLayer)
-            .AndShould()
-            .NotDependOnAny(_infrastructureLayer)
-            .AndShould()
-            .NotDependOnAny(_persistenceLayer)
-            .AndShould()
-            .NotDependOnAny(_presentationLayer)
             .Check(_architecture);
     }
 

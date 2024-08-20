@@ -7,13 +7,11 @@ public class PersistenceProjectTests : ArchitectureTestBase
     {
         Types()
             .That()
-            .Are(_presentationLayer)
+            .Are(_persistenceLayer)
             .Should()
             .NotDependOnAny(_applicationLayer)
-            .Because("Domain layer should not depend on Application layer")
             .AndShould()
-            .NotDependOnAny(_persistenceLayer)
-            .Because("Domain layer should not depend on Persistence layer")
+            .NotDependOnAny(_presentationLayer)
             .Check(_architecture);
     }
 }
