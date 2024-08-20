@@ -12,19 +12,19 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace DmTools.Presentation.Endpoints.ItemLists;
 
-public class AddItemListEndpoint
+public class Create
     : EndpointBaseAsync
-    .WithRequest<AddItemListCommand>
+    .WithRequest<CreateItemListCommand>
     .WithActionResult<Guid>
 {
     readonly ISender _sender;
 
-    public AddItemListEndpoint(ISender sender)
+    public Create(ISender sender)
     {
         _sender = sender;
     }
 
-    [HttpPost("ItemList/Create")]
+    [HttpPost("api/[namespace]")]
     [TranslateResultToActionResult()]
     [SwaggerOperation(
         Summary = "Creates a new Item List",
@@ -32,7 +32,7 @@ public class AddItemListEndpoint
         OperationId = "ItemList_Create",
         Tags = ["ItemListEndpoint"])]
     public override async Task<ActionResult<Guid>> HandleAsync(
-        [FromBody] AddItemListCommand request,
+        [FromBody] CreateItemListCommand request,
         CancellationToken cancellationToken = default)
     {
         var result = await _sender.Send(request, cancellationToken);

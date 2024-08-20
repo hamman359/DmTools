@@ -6,13 +6,14 @@ using KJWT.SharedKernel.Persistence;
 using KJWT.SharedKernel.Results;
 
 namespace DmTools.Application.ItemLists.Commands.AddItemList;
-public sealed class AddItemListCommandHandler
-    : ICommandHandler<AddItemListCommand, Guid>
+
+public sealed class CreateItemListCommandHandler
+    : ICommandHandler<CreateItemListCommand, Guid>
 {
     readonly IItemListRepository _itemListRepository;
     readonly IUnitOfWork _unitOfWork;
 
-    public AddItemListCommandHandler(
+    public CreateItemListCommandHandler(
         IItemListRepository itemListRepository,
         IUnitOfWork unitOfWork)
     {
@@ -21,7 +22,7 @@ public sealed class AddItemListCommandHandler
     }
 
     public async Task<Result<Guid>> Handle(
-        AddItemListCommand request,
+        CreateItemListCommand request,
         CancellationToken cancellationToken)
     {
         ItemList itemList = ItemList.Create(
@@ -32,6 +33,6 @@ public sealed class AddItemListCommandHandler
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return Result<Guid>.Created(itemList.Id, $"ItemList/{itemList.Id}");
+        return Result<Guid>.Success(itemList.Id);//, $"ItemLists/{itemList.Id}");
     }
 }

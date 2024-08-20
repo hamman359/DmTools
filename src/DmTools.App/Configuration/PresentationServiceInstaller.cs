@@ -22,8 +22,8 @@ public class PresentationServiceInstaller : IServiceInstaller
                         .For("POST", HttpStatusCode.Created)
                         .For("DELETE", HttpStatusCode.NoContent))
                     .For(ResultStatus.Error, HttpStatusCode.InternalServerError)
-                    .For(ResultStatus.Created, HttpStatusCode.Created)
-                ))
+                    .For(ResultStatus.Created, HttpStatusCode.Created))
+                .UseNamespaceRouteToken())
             .AddApplicationPart(Presentation.AssemblyReference.Assembly);
 
         services.AddSwaggerGen(c =>

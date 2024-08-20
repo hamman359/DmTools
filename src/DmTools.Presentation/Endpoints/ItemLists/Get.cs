@@ -13,19 +13,19 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace DmTools.Presentation.Endpoints.ItemLists;
 
-public class GetItemListEndpoint
+public class Get
     : EndpointBaseAsync
     .WithRequest<Guid>
     .WithActionResult<ItemListResponse>
 {
     readonly ISender _sender;
 
-    public GetItemListEndpoint(ISender sender)
+    public Get(ISender sender)
     {
         _sender = sender;
     }
 
-    [HttpGet("ItemList/{id}")]
+    [HttpGet("api/[namespace]/{id}", Name = "[namespace]_[controller]")]
     [TranslateResultToActionResult()]
     [SwaggerOperation(
         Summary = "Get a specific Item List",
