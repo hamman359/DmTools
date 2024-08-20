@@ -24,7 +24,7 @@ public class AddItemListEndpoint
         _sender = sender;
     }
 
-    [HttpPost("/ItemList/Create")]
+    [HttpPost("ItemList/Create")]
     [TranslateResultToActionResult()]
     [SwaggerOperation(
         Summary = "Creates a new Item List",

@@ -25,7 +25,7 @@ public class GetAllItemListsEndpoint
         _sender = sender;
     }
 
-    [HttpGet("/ItemList/List")]
+    [HttpGet("ItemList/List")]
     [TranslateResultToActionResult()]
     [SwaggerOperation(
         Summary = "Gets a list of all Item Lists",

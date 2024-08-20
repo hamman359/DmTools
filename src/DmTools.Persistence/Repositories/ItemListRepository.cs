@@ -1,6 +1,11 @@
 ﻿
+
+using Ardalis.Specification;
+using Ardalis.Specification.EntityFrameworkCore;
+
 using DmTools.Domain.Entities;
 using DmTools.Domain.Repositories;
+using DmTools.Persistence.Specifications;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -24,4 +29,16 @@ public sealed class ItemListRepository : IItemListRepository
         await _dbContext
             .Set<ItemList>()
             .ToListAsync(cancellationToken);
+
+    public async Task<ItemList?> GetByIdAsync(Guid itemlistId, CancellationToken cancellationToken) =>
+        await ApplySpecification(new ItemListByIdWithListItemsSpecification(itemlistId))
+            .FirstOrDefaultAsync(cancellationToken);
+
+
+    IQueryable<ItemList> ApplySpecification(ISpecification<ItemList> specification)
+    {
+        return SpecificationEvaluator
+            .Default
+            .GetQuery(_dbContext.Set<ItemList>().AsQueryable(), specification);
+    }
 }
