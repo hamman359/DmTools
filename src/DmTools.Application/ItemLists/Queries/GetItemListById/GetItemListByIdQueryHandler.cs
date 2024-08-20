@@ -1,4 +1,6 @@
-﻿using DmTools.Domain.Errors;
+﻿using System.Collections.Immutable;
+
+using DmTools.Domain.Errors;
 using DmTools.Domain.Repositories;
 
 using KJWT.SharedKernel.Messaging;
@@ -31,7 +33,13 @@ public sealed class GetItemListByIdQueryHandler
         var response = new ItemListResponse(
             itemList.Id,
             itemList.Name,
-            itemList.Description);
+            itemList.Description,
+            itemList.Items
+                .Select(x => new ListItemResponse(
+                    x.Value,
+                    x.Description ?? string.Empty,
+                    x.Weight))
+                .ToImmutableList());
 
         return response;
     }

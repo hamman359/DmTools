@@ -26,7 +26,8 @@ public sealed class GetAllItemListsQueryHandler
             .Select(i => new ItemListResponse(
                 i.Id,
                 i.Name,
-                i.Description))
+                i.Description,
+                new List<ListItemResponse>()))
             .ToList();
 
         return response;

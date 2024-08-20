@@ -3,4 +3,5 @@
 public sealed record ItemListResponse(
     Guid Id,
     string Name,
-    string Description);
+    string Description,
+    IReadOnlyCollection<ListItemResponse> Items);
