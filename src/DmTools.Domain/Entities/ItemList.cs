@@ -1,4 +1,5 @@
 ﻿using KJWT.SharedKernel.Primatives;
+using KJWT.SharedKernel.Results;
 
 namespace DmTools.Domain.Entities;
 
@@ -29,5 +30,17 @@ public sealed class ItemList : AggregateRoot
     {
         //TODO: Add Validations
         return new(new Ulid().ToGuid(), name, description);
+    }
+
+    public Result<ListItem> AddItem(
+        string value,
+        string description,
+        int weight)
+    {
+        var item = new ListItem(value, description, weight, Id);
+
+        _items.Add(item);
+
+        return Result.Success(item);
     }
 }

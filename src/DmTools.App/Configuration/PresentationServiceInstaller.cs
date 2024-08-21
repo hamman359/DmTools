@@ -15,11 +15,11 @@ public class PresentationServiceInstaller : IServiceInstaller
                 .AddDefaultResultConvention()
                 //.AddResultConvention(resultStatusMap => resultStatusMap
                 //    .AddDefaultMap()
+                //    .For(ResultStatus.Created, HttpStatusCode.Created)
                 //    .For(ResultStatus.Ok, HttpStatusCode.OK, resultStatusOptions => resultStatusOptions
                 //        .For("POST", HttpStatusCode.Created)
                 //        .For("DELETE", HttpStatusCode.NoContent))
-                //    .For(ResultStatus.Error, HttpStatusCode.InternalServerError)
-                //    .For(ResultStatus.Created, HttpStatusCode.Created))
+                //    .For(ResultStatus.Error, HttpStatusCode.InternalServerError))
                 .UseNamespaceRouteToken())
             .AddApplicationPart(Presentation.AssemblyReference.Assembly);
 

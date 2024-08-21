@@ -1,6 +1,6 @@
-﻿namespace DmTools.Application;
+﻿global using DmTools.Domain.Errors;
+global using DmTools.Domain.Repositories;
 
-public class Usings
-{
-
-}
+global using KJWT.SharedKernel.Messaging;
+global using KJWT.SharedKernel.Persistence;
+global using KJWT.SharedKernel.Results;

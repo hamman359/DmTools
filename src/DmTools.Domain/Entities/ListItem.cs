@@ -5,12 +5,11 @@ namespace DmTools.Domain.Entities;
 public sealed class ListItem : Entity
 {
     internal ListItem(
-        Guid id,
         string value,
         string? description,
         int weight,
         Guid itemListId)
-        : base(id)
+        : base(Ulid.NewUlid().ToGuid())
     {
         Value = value;
         Description = description;
